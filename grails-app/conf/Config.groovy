@@ -94,3 +94,14 @@ log4j = {
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'arkicontest_prototype.User'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'arkicontest_prototype.UserRole'
 grails.plugins.springsecurity.authority.className = 'arkicontest_prototype.Role'
+
+grails.plugins.springsecurity.controllerAnnotations.staticRules = [
+		'/js/**': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+		'/icons/**': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+		'/images/**': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+		'/css/**': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+		'/login/**': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+		'/logout/**': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+		'/shortCut/**': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+		'/**': ['IS_AUTHENTICATED_REMEMBERED'],
+]

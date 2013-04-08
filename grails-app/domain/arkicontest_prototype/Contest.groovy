@@ -7,8 +7,8 @@ class Contest {
 	Float reward
 	String type
 
-	static belongsTo = [creator:Creator]
-	static hasMany = [partecipations : ContestPartecipation] 
+	static belongsTo = [creator: User]
+	static hasMany = [partecipations: ContestPartecipation] 
 
 	static constraints = {
 		title blank:false,

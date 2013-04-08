@@ -10,5 +10,8 @@ class ContestPartecipation {
 	Integer results 
 
     static constraints = {
+		rate nullable:true
+		results nullable:true
+		contest nullable:true
     }
 }

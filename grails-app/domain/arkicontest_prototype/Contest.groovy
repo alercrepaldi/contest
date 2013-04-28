@@ -8,15 +8,21 @@ class Contest {
 
 	String title
 	Date dateCreation
+    Date dueDate
 	Float reward
-	String type
+	Type type
 
 	static belongsTo = [creator: User]
-	static hasMany = [partecipations: ContestPartecipation] 
+	static hasMany = [partecipations: ContestPartecipation]
 
 	static constraints = {
 		title blank:false, size:5..100
-		type inList:[GARDEN, IN_DOOR, HOUSE]
+		type nullable: false
+        dueDate validator: {val, obj -> val > obj.dateCreation}
 	}
+
+    static List<String> getTypes () {
+        [IN_DOOR, HOUSE, GARDEN]
+    }
 
 }

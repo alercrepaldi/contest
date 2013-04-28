@@ -2,7 +2,7 @@
 	<div class="navbar-inner">
 		<div class="container">
 
-			<a class="brand" href="./index.html">@arkicontest</a>
+			<a class="brand" href="/arkicontest_prototype">@arkicontest</a>
 
 			<ul class="nav pull-right">
 				<li class=""><a href="./index.html">Home</a></li>

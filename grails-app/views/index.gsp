@@ -39,7 +39,7 @@
         <div class="row pagination-centered">
             <div class="row">
                 <button class="span4 offset2 btn btn-large btn-info">Guarda il video</button>
-                <button class="btn span4 btn-large btn-warning">Crea un contest</button>
+                <g:link controller="contest" action="create" class="btn span4 btn-large btn-warning">Crea un contest</g:link>
             </div>
         </div>
     </div>
@@ -66,19 +66,19 @@
             <div class="span3">
                 <div class="image"><img src="${resource(dir: 'images/contest-flow', file: 'home-5_05.png')}"/></div>
 
-                <div class="description">Crea un contest e fissa un budget</div>
+                <div class="description lead">Crea un contest e fissa un budget</div>
             </div>
 
             <div class="span3">
                 <div class="image"><img src="${resource(dir: 'images/contest-flow', file: 'home-5_07.png')}"/></div>
 
-                <div class="description">Ricevi le proposte dai talenti della rete</div>
+                <div class="description lead">Ricevi le proposte dai talenti della rete</div>
             </div>
 
             <div class="span3">
                 <div class="image"><img src="${resource(dir: 'images/contest-flow', file: 'home-5_09.png')}"/></div>
 
-                <div class="description">Premia il vincitore</div>
+                <div class="description lead">Premia il vincitore</div>
             </div>
         </div>
     </div>
@@ -115,39 +115,8 @@
                     </div>
 
                     <ul class="action-list">
-                        <style>
-                        .interior-icon {
-                            background-image: url(${resource(dir: 'images', file: 'interior-icon.png')});
-                            background-position: center center;
-                            background-repeat: no-repeat;
-                        }
 
-                        .garden-icon {
-                            background-image: url(${resource(dir: 'images', file: 'garden-icon.png')});
-                            background-position: center center;
-                            background-repeat: no-repeat;
-                        }
-
-                        .house-icon {
-                            background-image: url(${resource(dir: 'images', file: 'exterior-icon.png')});
-                            background-position: center center;
-                            background-repeat: no-repeat;
-                        }
-                        </style>
-
-                        <g:if test="${contest.type == Contest.GARDEN}">
-                            <li><img src="${resource(dir: 'images', file: 'garden-icon.png')}"/></li>
-
-                        </g:if>
-                        <g:if test="${contest.type == Contest.IN_DOOR}">
-                            <li><img src="${resource(dir: 'images', file: 'interior-icon.png')}"/></li>
-
-                        </g:if>
-                        <g:if test="${contest.type == Contest.HOUSE}">
-                            <li><img src="${resource(dir: 'images', file: 'exterior-icon.png')}"/></li>
-
-                        </g:if>
-
+                        <li><img src="${resource(dir: 'images', file: contest.type.icon)}"/></li>
 
                         <li></li>
                         <li><h3 style="line-height:30px;margin-bottom:0; padding-bottom: 0;">${Math.round(contest.reward)}</h3>

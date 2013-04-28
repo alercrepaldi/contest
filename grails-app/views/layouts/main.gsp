@@ -23,11 +23,10 @@
 <link rel="stylesheet/less" type="text/css"
 	href="${resource(dir: 'less', file: 'bootstrap.less')}" />
 
-<!--<link rel="stylesheet/less" type="text/css"
-	href="${resource(dir: 'less/custom', file: 'index.less')}" />-->
+    <script type="text/javascript" src="${resource(dir: 'js', file: 'bootstrap-datepicker.js')}"></script>
 
 
-<script type="text/javascript">
+    <script type="text/javascript">
     less = {
         env: "development", // or "production"
         async: false,       // load imports async
@@ -45,6 +44,7 @@
 </script>
 
 <r:require modules="less-compiler" />
+<r:require module="bootstrapDatepicker"/>
 <g:layoutHead />
 <r:layoutResources />
 </head>

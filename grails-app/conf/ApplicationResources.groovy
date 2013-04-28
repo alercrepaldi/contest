@@ -3,12 +3,16 @@ modules = {
         resource url:'js/application.js'
     }
 	
-	/*bootstrap {
+	bootstrap {
 		resource url:'bootstrap/css/bootstrap.css'
 		resource url:'boostrap/img/glyphicons-halflings.png'
 		resource url:'boostrap/img/glyphicons-halflings-white.png'
-		resource url:'bootstrap.js'		
-	}*/
+		resource url:'bootstrap.js'
+	}
+
+    bootstrapDatepicker {
+        resource url:'js/bootstrap-datepicker.js'
+    }
 	
 	/*'bootstrap' {
 		resource url:'less/bootstrap.less',attrs:[rel: "stylesheet/less", type:'css'], bundle:'bundle_bootstrap'

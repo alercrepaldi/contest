@@ -1,6 +1,5 @@
 // variable definitions
 
-@main-banner-background:   @grayLighter;
 @shadow-color:             #999;
 
 // class definitions
@@ -16,12 +15,12 @@
     margin-top:10px;
     padding-top:40px;
     padding-bottom:40px;    
-    background-color: @main-banner-background;
-    border-bottom:2px solid darken(@main-banner-background, 20%);
+    background-color: @grayLighter;
+    border-bottom:2px solid darken(@grayLighter, 20%);
     .box-shadow(1px 1px 20px @shadow-color);
 
   [class = "span4"]   {
-        border-top:10px solid darken(@main-banner-background, 40%);
+        border-top:10px solid darken(@grayLighter, 40%);
     }
 }
 

@@ -1,3 +1,5 @@
+import arkicontest_prototype.Type
+
 import javax.management.relation.Role;
 
 import java.util.Date;
@@ -31,33 +33,39 @@ class BootStrap {
 				
 		createUser('admin', 'admin', 'aler.crepaldi@gmail.com', [Role.DESIGNER, Role.CREATOR])
 
+        // Create some types
+
+        Type garden = createType('garden', '', 'garden-icon.png')
+        Type house = createType('house', '', 'exterior-icon.png')
+        Type in_door = createType('in_door', '',  'interior-icon.png')
+
 		// Create some contests
 
 		User Paolo = User.findByUsername('paolo')
 		User Giulio = User.findByUsername('giulio')
 
-		createContest(Paolo, 'Progettare un armadio', new Date(), 120, Contest.HOUSE)
-		createContest(Paolo, 'Progettare una sedia', new Date()-2, 80, Contest.HOUSE)
-		createContest(Giulio, 'Gazebo estivo', new Date()-5, 250, Contest.GARDEN)
-		createContest(Paolo, 'Stanza da letto bimbi', new Date(), 500, Contest.IN_DOOR)
-		createContest(Giulio, 'Siepe giardino fronte strada', new Date(), 220, Contest.GARDEN)
+		createContest(Paolo, 'Progettare un armadio', new Date(), new Date() + 7, 120, house)
+		createContest(Paolo, 'Progettare una sedia', new Date()-2, new Date()-2 + 7,  80, house)
+		createContest(Giulio, 'Gazebo estivo', new Date()-5, new Date() + 7, 250, garden)
+		createContest(Paolo, 'Stanza da letto bimbi', new Date(), new Date() + 7, 500, in_door)
+		createContest(Giulio, 'Siepe giardino fronte strada', new Date(), new Date() + 7, 220, garden)
 		
 		// Add designers to contests
-		
-	    List<Contest> gardenContests = Contest.findAllByType(Contest.GARDEN)
+
+	    List<Contest> gardenContests = Contest.findAllByType(garden)
 		List<User> gardenContestPartecipants = [User.findByUsername('aler'), 
 												User.findByUsername('marco'),
 												User.findByUsername('andrea')]
 		
 		gardenContests.each {addPartecipants(it, gardenContestPartecipants)}
 		
-		List<Contest> houseContests = Contest.findAllByType(Contest.HOUSE)
+		List<Contest> houseContests = Contest.findAllByType(house)
 		List<User> houseContestPartecipants = [User.findByUsername('marco'),
 												User.findByUsername('roberto')]
 		
 		houseContests.each {addPartecipants(it, houseContestPartecipants)}
 		
-		List<Contest> inDoorContests = Contest.findAllByType(Contest.IN_DOOR)
+		List<Contest> inDoorContests = Contest.findAllByType(in_door)
 		List<User> inDoorContestPartecipants = [User.findByUsername('aler'),
 												User.findByUsername('mario')]
 		
@@ -83,12 +91,19 @@ class BootStrap {
 		}
 	}
 
-	private createContest(User creator, String title, Date dateCreation, Integer reward, String type) {
+    private createType(String name, String description, String icon) {
+        new Type(name: name,
+                    icon: icon,
+                    description: description).save(failOnError: true, flush: true)
+    }
+
+	private createContest(User creator, String title, Date dateCreation, Date dueDate, Integer reward, Type type) {
 		print "creating new contest: ${title}"
 
 		new Contest(creator: creator,
 					title : title,
 					dateCreation: dateCreation,
+                    dueDate: dueDate,
 					reward:reward,
 					type: type).save(failOnError:true, flush:true)
 
